@@ -30,21 +30,24 @@ const useStyles = makeStyles({
   toolTipSmall: {
     position: 'absolute',
     zIndex: 2,
-    top: "9%",
-    left: "85%"
+    top:10,
+    right: 10
   },
   toolTipMedium: {
     position: 'absolute',
     zIndex: 2,
-    top: "4%",
-    left: "85%"
+    top: 10,
+    right: 10
   },
   toolTipLarge: {
     position: 'absolute',
     zIndex: 2,
-    top: "8%",
-    left: "94%"
+    top: 10,
+    right: 10
   },
+  color: {
+    color: "red"
+  }
 });
 
 
@@ -140,7 +143,7 @@ const LeanCanvas = (props) => {
                 </Tooltip>
                   <FormTextField
                     label="➀課題"
-                    className={classes.margin}
+                    className={classes.color}
                     variant="filled"
                     id="form-input"
                     formType={false}

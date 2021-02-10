@@ -6,7 +6,7 @@ import LeanCanvas from './LeanCanvas'
 import ButtonGroup from './ButtonGroup'
 
 import AppContext from "../contexts/AppContext"
-import {DELETE_ALL_EVENT, CREATE_LEAN_CANVAS} from "../actions"
+import {ALL_TEXT_CLEAR, CREATE_LEAN_CANVAS} from "../actions"
 
 const useStyles = makeStyles({
   root: {
@@ -59,6 +59,13 @@ const Main = () => {
     })
   }
 
+  const allTextClear = e => {
+    console.log("deleteLeanCanvasまで来た")
+    dispatch({
+      type: ALL_TEXT_CLEAR,
+    })
+  }
+
   return (
     <Box display="flex" flexDirection="row" className={classes.main}>
       <LeanCanvas
@@ -85,7 +92,21 @@ const Main = () => {
         unfairAdvantage={unfairAdvantage}
         setUnfairAdvantage={setUnfairAdvantage}
         />
-      <ButtonGroup createLeanCanvas={createLeanCanvas}/>
+      <ButtonGroup
+        createLeanCanvas={createLeanCanvas} 
+        allTextClear={allTextClear}
+        setProblem={setProblem}
+        setAlternatives={setAlternatives}
+        setCustomer={setCustomer}
+        setEarlyAdopters={setEarlyAdopters}
+        setUniqueValue={setUniqueValue}
+        setSolution={setSolution}
+        setChannels={setChannels}
+        setRevenue={setRevenue}
+        setCost={setCost}
+        setKeyMetrics={setKeyMetrics}
+        setUnfairAdvantage={setUnfairAdvantage}
+      />
     </Box>
   )
 }
