@@ -23,17 +23,15 @@ const APP_KEY = 'appWithRedux'
 
 const App = () => {
   const classes = useStyles();
-  const appState = sessionStorage.getItem(APP_KEY)
+  const appState = localStorage.getItem(APP_KEY)
   const initialState = appState ? JSON.parse(appState) : {
     contens: [],
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  console.log(state)
 
   useEffect(() => {
-    sessionStorage.setItem(APP_KEY, JSON.stringify(state) )
-    //console.log("useeffectまで来た")
+    localStorage.setItem(APP_KEY, JSON.stringify(state) )
     },[state])
 
   return (

@@ -8,6 +8,7 @@ ReactDOM.render(
          body{
              margin: 0px;
              padding: 0px;
+             padding-right: 0px !important;
          }
         `}</style>
     <App />

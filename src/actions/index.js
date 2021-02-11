@@ -1,3 +1,3 @@
-
 export const ALL_TEXT_CLEAR = 'ALL_TEXT_CLEAR'
+export const TEXT_CLEAR = 'TEXT_CLEAR'
 export const CREATE_LEAN_CANVAS = 'CREATE_LEAN_CANVAS'

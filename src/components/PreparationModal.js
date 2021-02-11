@@ -21,12 +21,12 @@ const CancelButton = withStyles((theme) => ({
 }))(Button);
 
 const PreparationModal = (props) => {
-  console.log("props受取前")
+  //console.log("props受取前")
   const openPreparationModal = props.openPreparationModal
   const setOpenPreparationModal = props.setOpenPreparationModal
   const handleClosePreparationModal = props.handleClosePreparationModal
   const setOpenFinishModal = props.setOpenFinishModal
-  console.log("props受取")
+  //console.log("props受取")
 
   return (
   <Dialog

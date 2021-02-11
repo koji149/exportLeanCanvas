@@ -12,37 +12,56 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    marginLeft: 8,
-    marginRight: 8
   },
-  leanCanvas: {
+  container: {
     marginTop: "3%",
-    marginBottom: "3%",
+    marginBottom: "1%",
     marginLeft: 8,
-    marginRight: 8
+    marginRight: 8,
+    display: "flex",
+    flexDirection: "column"
   },
-  gridItem: {
-    position: 'relative'
+  containerTopRatio: {
+    flex: 0.8
   },
-  title: {
-    fontSize: 14,
+  topContent:{
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  gridItemTwoVertical: {
+    position: 'relative',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  gridItemOnlyOne: {
+    position: 'relative',
+  },
+  containerBottomRatio: {
+    flex: 0.2
+  },
+  gridItemTwoRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
   toolTipSmall: {
     position: 'absolute',
     zIndex: 2,
-    top:10,
+    top: 6,
     right: 10
   },
   toolTipMedium: {
     position: 'absolute',
     zIndex: 2,
-    top: 10,
-    right: 10
+    top: 6,
+    right: 10,
   },
   toolTipLarge: {
     position: 'absolute',
     zIndex: 2,
-    top: 10,
+    top: 6,
     right: 10
   },
   color: {
@@ -67,7 +86,7 @@ const useStylesFormSmall = makeStyles((theme) => ({
     },
     '&$focused': {
       backgroundColor: '#fff',
-      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px inset`,
+      boxshadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px inset`,
       borderColor: theme.palette.primary.main,
     },
   },
@@ -76,7 +95,7 @@ const useStylesFormSmall = makeStyles((theme) => ({
 const useStylesFormMedium = makeStyles((theme) => ({
   root: {
     borderTop: '4px solid #e2e2e1',
-    borderBottom: '4px solid #e2e2e1',
+    borderBottom: '4.25px solid #e2e2e1',
     borderLeft: '2px solid #e2e2e1',
     borderRight: '2px solid #e2e2e1',
     overflow: 'hidden',
@@ -89,7 +108,7 @@ const useStylesFormMedium = makeStyles((theme) => ({
     },
     '&$focused': {
       backgroundColor: '#fff',
-      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px inset`,
+      boxshadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px inset`,
       borderColor: theme.palette.primary.main,
     },
   },
@@ -104,7 +123,7 @@ const FormTextField = ({formType, ...props}) => {
   return <TextField InputProps={{ classes, disableUnderline: true }} {...props} />;
 }
 
-const LeanCanvas = (props) => {
+const LeanCanvasForLaptop = (props) => {
   const classes = useStyles();
 
   const problem = props.problem
@@ -131,19 +150,18 @@ const LeanCanvas = (props) => {
   const setUnfairAdvantage = props.setUnfairAdvantage
 
   return (
-    <Box flex={0.9}>
-      <Box display="flex" flexDirection="column" className={classes.leanCanvas}>
+    <Box className={classes.root}>
+      <Box className={classes.container}>
         <Paper elevation={3} >
-          <Box flex={0.8}>
-          <Grid container direction="row" justify="center" alignItems="center" >
+          <Box className={classes.containerTopRatio}>
+          <Grid container className={classes.topContent}>
             <Grid item xs >
-              <Grid container direction="column" justify="center" alignItems="center" item xs className={classes.gridItem}>
+              <Grid container item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="上位三つの課題を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                   <FormTextField
                     label="➀課題"
-                    className={classes.color}
                     variant="filled"
                     id="form-input"
                     formType={false}
@@ -154,13 +172,12 @@ const LeanCanvas = (props) => {
                     onChange={e => setProblem(e.target.value)}
                   />
               </Grid>
-              <Grid item xs className={classes.gridItem}>
+              <Grid item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="既存の代替品を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
                   label="➁既存の代替品"
-                  className={classes.margin}
                   variant="filled"
                   id="form-input"
                   formType={false}
@@ -173,13 +190,12 @@ const LeanCanvas = (props) => {
               </Grid>
             </Grid>
             <Grid item xs>
-              <Grid container direction="column" justify="center" alignItems="center" item xs className={classes.gridItem}>
+              <Grid container item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="具体的な解決策の上位三つを記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
                     label="➅ソリューション"
-                    className={classes.margin}
                     variant="filled"
                     id="form-input"
                     formType={false}
@@ -190,13 +206,12 @@ const LeanCanvas = (props) => {
                     onChange={e => setSolution(e.target.value)}
                   />
               </Grid>
-              <Grid item xs className={classes.gridItem}>
+              <Grid item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="PMFにたどり着くまでに計測すべき指標を記載します。" placement="top" className={classes.toolTipSmall}>
                     <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
                   label="➉主要指標"
-                  className={classes.margin}
                   variant="filled"
                   id="form-input"
                   formType={false}
@@ -208,13 +223,12 @@ const LeanCanvas = (props) => {
                 />
               </Grid>
             </Grid>
-            <Grid item xs className={classes.gridItem}>
+            <Grid item xs className={classes.gridItemOnlyOne}>
               <Tooltip title="他とは違っていて注目する価値がある理由を記載します。" placement="top" className={classes.toolTipMedium}>
-                  <InfoOutlinedIcon color="action" />
+                <InfoOutlinedIcon color="action" />
               </Tooltip>
               <FormTextField
                   label="➄独自の価値提案"
-                  className={classes.margin}
                   variant="filled"
                   id="form-input"
                   formType={true}
@@ -226,13 +240,12 @@ const LeanCanvas = (props) => {
                 />
             </Grid>
             <Grid item xs>
-              <Grid container direction="column" justify="center" alignItems="center" item xs className={classes.gridItem}>
+              <Grid container item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="競合に対しての圧倒的な優位性を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
                   label="⑪圧倒的な優位性"
-                  className={classes.margin}
                   variant="filled"
                   id="form-input"
                   formType={false}
@@ -243,7 +256,7 @@ const LeanCanvas = (props) => {
                   onChange={e => setUnfairAdvantage(e.target.value)}
                 />
               </Grid>
-              <Grid item xs className={classes.gridItem}>
+              <Grid item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="顧客にリーチする経路を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
@@ -261,14 +274,13 @@ const LeanCanvas = (props) => {
                 />
               </Grid>
             </Grid>
-            <Grid item xs>
-              <Grid container direction="column" justify="center" alignItems="center" item xs className={classes.gridItem}>
+            <Grid item xs >
+              <Grid container item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="顧客の特徴を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                   <FormTextField
                     label="➂顧客セグメント"
-                    className={classes.margin}
                     variant="filled"
                     id="form-input"
                     formType={false}
@@ -279,7 +291,7 @@ const LeanCanvas = (props) => {
                     onChange={e => setCustomer(e.target.value)}
                   />
               </Grid>
-              <Grid container direction="column" justify="center" alignItems="center" item xs className={classes.gridItem}>
+              <Grid container item xs className={classes.gridItemTwoVertical}>
                 <Tooltip title="課題に対して積極的に代替策を探している人の特徴を記載します。" placement="top" className={classes.toolTipSmall}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
@@ -299,9 +311,9 @@ const LeanCanvas = (props) => {
             </Grid>
           </Grid>
           </Box>
-          <Box flex={0.2} className={classes.gridItem}>
-            <Grid container direction="row" justify="center" alignItems="center" >
-              <Grid item xs className={classes.gridItem}>
+          <Box className={classes.containerBottomRatio}>
+            <Grid container className={classes.gridItemTwoRow}>
+              <Grid item xs className={classes.gridItemOnlyOne}>
                 <Tooltip title="市場に送り出すまでにかかるコストを記載します。" placement="top" className={classes.toolTipLarge}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
@@ -318,7 +330,7 @@ const LeanCanvas = (props) => {
                   onChange={e => setRevenue(e.target.value)}
                 />
               </Grid>
-              <Grid item xs className={classes.gridItem}>
+              <Grid item xs className={classes.gridItemOnlyOne}>
                 <Tooltip title="どのような課金形態になるのかを記載します。" placement="top" className={classes.toolTipLarge}>
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
@@ -343,4 +355,4 @@ const LeanCanvas = (props) => {
   )
 }
 
-export default LeanCanvas
+export default LeanCanvasForLaptop

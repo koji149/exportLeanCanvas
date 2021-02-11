@@ -2,9 +2,9 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-import DownLoadSpredSheetButton from './DownLoadSpredSheetButton'
-import AllTextClearButton from './AllTextClearButton'
-import ChangeColorTextButton from './ChangeColorTextButton'
+import DownLoadSpredSheetButton from '../DownLoadSpredSheetButton'
+import AllTextClearButton from '../AllTextClearButton'
+import ChangeColorTextButton from '../ChangeColorTextButton'
 
 const useStyles = makeStyles((theme) => ({
   buttonGroup: {
@@ -12,7 +12,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "3%",
     marginLeft: 8,
     marginRight: 8,
-    
+    display: "flex",
+    flex: 0.1,
+    flexDirection: "column"
   },
   button: {
     flex: "inherit",
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ButtonGroup = (props) => {
+const ButtonGroupForDesktop = (props) => {
   const classes = useStyles();
 
   const createLeanCanvas = props.createLeanCanvas
@@ -38,13 +40,11 @@ const ButtonGroup = (props) => {
   const setUnfairAdvantage = props.setUnfairAdvantage
 
   return (
-    <Box flex={0.1} className={classes.buttonGroup} display="flex" flexDirection="column" >
+    <Box className={classes.buttonGroup}  >
       <Box flex={0.5} className={classes.button}>
         <DownLoadSpredSheetButton createLeanCanvas={createLeanCanvas}/>
       </Box>
-      <Box flex={0.25} >
-      </Box>
-      <Box flex={0.25} className={classes.button}>
+      <Box flex={0.5} className={classes.button}>
         <AllTextClearButton 
           allTextClear={allTextClear}
           setProblem={setProblem}
@@ -60,11 +60,8 @@ const ButtonGroup = (props) => {
           setUnfairAdvantage={setUnfairAdvantage}
         />
       </Box>
-      <Box flex={0.25} className={classes.button}>
-        <ChangeColorTextButton />
-      </Box>
     </Box>
   )
 }
 
-export default ButtonGroup;
+export default ButtonGroupForDesktop;

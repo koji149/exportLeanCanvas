@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,20 +9,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';import {
 import Typography from '@material-ui/core/Typography';
 
 import LinkOutlinedIcon from '@material-ui/icons/LinkOutlined';
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2, 4, 3),
-  },
-  button: {
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
 
 const CancelButton = withStyles((theme) => ({
   root: {
@@ -36,7 +21,6 @@ const CancelButton = withStyles((theme) => ({
 }))(Button);
 
 const FinishModal = (props) => {
-  const classes = useStyles();
   const openFinishModal = props.openFinishModal
   const handleCloseFinishModal = props.handleCloseFinishModal
   return (
@@ -56,7 +40,7 @@ const FinishModal = (props) => {
         <DialogContent>
           <Box style={{textAlign: "center", paddingTop: 15, alignContent: 'center'}}>
           <Button href="https://app.bizmake.jp/canvas/js-4863/Lean/%EF%BD%8A-9489" color="primary" variant="outlined" startIcon={< LinkOutlinedIcon />}>
-          https://aaaaaaaaaaaaaaaaaaaaa
+          リーンキャンバスシート
         </Button>
           <Box m={2}>
             <Typography variant="body2">

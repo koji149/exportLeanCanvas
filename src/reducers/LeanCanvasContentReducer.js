@@ -1,6 +1,7 @@
 import {
   CREATE_LEAN_CANVAS,
-  ALL_TEXT_CLEAR
+  ALL_TEXT_CLEAR,
+  TEXT_CLEAR
 } from "../actions"
 
 const operationLeanCanvasContents = (state = [], action) => {
@@ -20,6 +21,8 @@ const operationLeanCanvasContents = (state = [], action) => {
         unfairAdvantage: action.unfairAdvantage,
   }
       return [contents]
+    case TEXT_CLEAR:
+      return state.filter(event => event.id !== action.id)
     case ALL_TEXT_CLEAR:
       return []
     default:
