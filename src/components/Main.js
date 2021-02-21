@@ -1,7 +1,8 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import { useMediaQuery } from 'react-responsive'
+import axios from 'axios'
 
 
 import LeanCanvasForDesktop from './ForDesktop/LeanCanvasForDesktop';
@@ -30,26 +31,26 @@ const useStyles = makeStyles({
   desktop: {
     marginLeft: 8,
     marginRight: 8,
-    display: "flex", 
+    display: "flex",
     flexDirection: "row"
   },
   laptop: {
     marginLeft: 8,
     marginRight: 8,
-    display: "flex", 
+    display: "flex",
     flexDirection: "column"
   },
   tablet: {
     marginLeft: 8,
     marginRight: 8,
-    display: "flex", 
+    display: "flex",
     flexDirection: "column",
     position: "relative"
   },
   mobile: {
     marginLeft: 8,
     marginRight: 8,
-    display: "flex", 
+    display: "flex",
     flexDirection: "column",
     position: "relative"
   }
@@ -70,33 +71,62 @@ const Main = () => {
   const [keyMetrics, setKeyMetrics] = useState("")
   const [unfairAdvantage, setUnfairAdvantage] = useState("")
 
+  const [spredSheetUrl, setSpredSheetUrl] = useState("")
+  const [isArrivedUrl, setIsArrivedUrl] = useState(false)
+
+  const isFirstRender = useRef(false)
+
   const { state, dispatch} = useContext(AppContext)
 
   const isDesktop = useMediaQuery({ minWidth: 1280 })
-  const isLaptop = useMediaQuery({ minWidth: 1075, maxWidth: 1280 })
+  const isLaptop = useMediaQuery({ minWidth: 1076, maxWidth: 1280 })
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1075 })
-  const isMobile = useMediaQuery({ maxWidth: 768 })
+  const isMobile = useMediaQuery({ maxWidth: 767 })
 
   const createLeanCanvas = e => {
-    console.log("createLeanCanvasまで来た")
-    dispatch({
-      type: CREATE_LEAN_CANVAS,
-      problem,
-      alternatives,
-      customer,
-      earlyAdopters,
-      uniqueValue,
-      solution,
-      channels,
-      revenue,
-      cost,
-      keyMetrics,
-      unfairAdvantage
-    })
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+    } else {
+      dispatch({
+        type: CREATE_LEAN_CANVAS,
+        problem,
+        alternatives,
+        customer,
+        earlyAdopters,
+        uniqueValue,
+        solution,
+        channels,
+        revenue,
+        cost,
+        keyMetrics,
+        unfairAdvantage
+      })
+      axios({
+        method : "POST",
+        url : "http://localhost:3001/api/v1/export",
+        data : { problem: problem,
+          alternatives: alternatives,
+          customer: customer,
+          earlyAdopters: earlyAdopters,
+          uniqueValue: uniqueValue,
+          solution: solution,
+          channels: channels,
+          revenue: revenue,
+          cost: cost,
+          keyMetrics: keyMetrics,
+          unfairAdvantage: unfairAdvantage
+        }
+      })
+      .then((response)=> {
+        setSpredSheetUrl(`https://docs.google.com/spreadsheets/d/${response.data}/edit`)
+        setIsArrivedUrl(true)
+      })
+      .catch((error)=> {
+      });
+    }
   }
 
   const allTextClear = e => {
-    console.log("deleteLeanCanvasまで来た")
     dispatch({
       type: ALL_TEXT_CLEAR,
     })
@@ -104,7 +134,6 @@ const Main = () => {
 
   const textClear = e => {
     const id = e.id
-    console.log(`deleteLeanCanvasまで来たid=${id}`)
     dispatch({
       type: TEXT_CLEAR,
       id
@@ -113,7 +142,7 @@ const Main = () => {
 
   return (
     <>
-    {isDesktop ? 
+    {isDesktop ?
       <Box className={classes.desktop}>
         <LeanCanvasForDesktop
           problem={problem}
@@ -140,7 +169,7 @@ const Main = () => {
           setUnfairAdvantage={setUnfairAdvantage}
           />
         <ButtonGroupForDesktop
-          createLeanCanvas={createLeanCanvas} 
+          createLeanCanvas={createLeanCanvas}
           allTextClear={allTextClear}
           setProblem={setProblem}
           setAlternatives={setAlternatives}
@@ -153,10 +182,13 @@ const Main = () => {
           setCost={setCost}
           setKeyMetrics={setKeyMetrics}
           setUnfairAdvantage={setUnfairAdvantage}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
         />
       </Box> : null
     }
-    {isLaptop ? 
+    {isLaptop ?
       <Box className={classes.laptop}>
         <LeanCanvasForLaptop
           problem={problem}
@@ -183,7 +215,7 @@ const Main = () => {
           setUnfairAdvantage={setUnfairAdvantage}
           />
         <ButtonGroupForLaptop
-          createLeanCanvas={createLeanCanvas} 
+          createLeanCanvas={createLeanCanvas}
           allTextClear={allTextClear}
           setProblem={setProblem}
           setAlternatives={setAlternatives}
@@ -196,10 +228,13 @@ const Main = () => {
           setCost={setCost}
           setKeyMetrics={setKeyMetrics}
           setUnfairAdvantage={setUnfairAdvantage}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
         />
       </Box> : null
     }
-    {isTablet ? 
+    {isTablet ?
       <Box className={classes.tablet}>
         <LeanCanvasForTablet
           problem={problem}
@@ -227,7 +262,7 @@ const Main = () => {
           textClear={textClear}
           />
         <ButtonGroupForTablet
-          createLeanCanvas={createLeanCanvas} 
+          createLeanCanvas={createLeanCanvas}
           setProblem={setProblem}
           setAlternatives={setAlternatives}
           setCustomer={setCustomer}
@@ -239,10 +274,13 @@ const Main = () => {
           setCost={setCost}
           setKeyMetrics={setKeyMetrics}
           setUnfairAdvantage={setUnfairAdvantage}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
         />
       </Box> : null
     }
-    {isMobile ? 
+    {isMobile ?
       <Box className={classes.mobile}>
         <LeanCanvasForMobile
           problem={problem}
@@ -270,7 +308,7 @@ const Main = () => {
           textClear={textClear}
           />
         <ButtonGroupForMobile
-          createLeanCanvas={createLeanCanvas} 
+          createLeanCanvas={createLeanCanvas}
           setProblem={setProblem}
           setAlternatives={setAlternatives}
           setCustomer={setCustomer}
@@ -282,6 +320,9 @@ const Main = () => {
           setCost={setCost}
           setKeyMetrics={setKeyMetrics}
           setUnfairAdvantage={setUnfairAdvantage}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
         />
       </Box> : null
     }

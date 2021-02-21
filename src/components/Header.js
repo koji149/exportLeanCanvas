@@ -23,7 +23,7 @@ const Header = () => {
       <AppBar className={classes.logo}>
       <Toolbar>
         <Typography variant="h6" >
-          News
+        YourIdea
         </Typography>
       </Toolbar>
     </AppBar>

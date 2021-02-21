@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     right: 10,
     bottom: 20,
-    zIndex: 3 
+    zIndex: 3
   },
   button: {
     flex: "inherit",
@@ -25,24 +25,22 @@ const useStyles = makeStyles((theme) => ({
 
 const ButtonGroupForMobile = (props) => {
   const classes = useStyles();
-
-  const createLeanCanvas = props.createLeanCanvas
-  //const setProblem = props.setProblem
-  //const setAlternatives = props.setAlternatives
-  //const setCustomer = props.setCustomer
-  //const setEarlyAdopters = props.setEarlyAdopters
-  //const setUniqueValue = props.setUniqueValue
-  //const setSolution = props.setSolution
-  //const setChannels = props.setChannels
-  //const setRevenue = props.setRevenue
-  //const setCost = props.setCost
-  //const setKeyMetrics = props.setKeyMetrics
-  //const setUnfairAdvantage = props.setUnfairAdvantage
+  const {
+    createLeanCanvas,
+    spredSheetUrl,
+    isArrivedUrl,
+    setIsArrivedUrl
+  } = props
 
   return (
     <Box className={classes.buttonGroup}  >
       <Box className={classes.button}>
-        <DownLoadSpredSheetButtonForMobile createLeanCanvas={createLeanCanvas}/>
+        <DownLoadSpredSheetButtonForMobile
+          createLeanCanvas={createLeanCanvas}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
+        />
       </Box>
     </Box>
   )

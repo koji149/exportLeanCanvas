@@ -28,37 +28,29 @@ const CustomizedProgressBars = (props) => {
 
   const setOpenPreparationModal = props.setOpenPreparationModal
   const setOpenFinishModal = props.setOpenFinishModal
+  const isArrivedUrl = props.isArrivedUrl
+  const setIsArrivedUrl = props.setIsArrivedUrl
+
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress >= 100 ? clearInterval(timer) : prevProgress + 10));
-    }, 800);
+      setProgress((prevProgress) => (prevProgress >= 100 ? (()=>{clearInterval(timer); return 100;})() : prevProgress + 5));
+    }, 400);
     return () => clearInterval(timer);
   }, []
   );
 
-  const result = new Promise(resolve => {
-    if (progress>=100)resolve(progress);
-  })
+  useEffect(() => {
+    if ((isArrivedUrl)&&(progress>=100)) {
+      setTimeout(() => {
+        setOpenPreparationModal(false)
+        setIsArrivedUrl(false)
+        setOpenFinishModal(true)
+      }, 100);
+    }
+  }, [isArrivedUrl,progress]
+  );
 
-  result
-    .then(result => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          setOpenPreparationModal(false)
-          resolve(result)
-        }, 500);
-      });
-    })
-    .then(result => {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          setOpenFinishModal(true)
-          resolve(result)
-        }, 100);
-      });
-    })
-    
   return (
     <div className={classes.root}>
       <BorderLinearProgress variant="determinate" value={progress} />

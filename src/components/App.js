@@ -23,7 +23,7 @@ const APP_KEY = 'appWithRedux'
 
 const App = () => {
   const classes = useStyles();
-  const appState = localStorage.getItem(APP_KEY)
+  const appState = sessionStorage.getItem(APP_KEY)
   const initialState = appState ? JSON.parse(appState) : {
     contens: [],
   }
@@ -31,17 +31,17 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    localStorage.setItem(APP_KEY, JSON.stringify(state) )
+    sessionStorage.setItem(APP_KEY, JSON.stringify(state) )
     },[state])
 
   return (
-    <AppContext.Provider value={{state, dispatch}}>
-      <div className={classes.root}>
-        <Header/>
-        <Main/>
-        <Footer/>
-      </div>
-    </AppContext.Provider>
+      <AppContext.Provider value={{state, dispatch}}>
+        <div className={classes.root}>
+            <Header/>
+            <Main/>
+            <Footer/>
+        </div>
+      </AppContext.Provider>
   );
 }
 

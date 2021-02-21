@@ -23,6 +23,8 @@ const CancelButton = withStyles((theme) => ({
 const FinishModal = (props) => {
   const openFinishModal = props.openFinishModal
   const handleCloseFinishModal = props.handleCloseFinishModal
+  const spredSheetUrl = props.spredSheetUrl
+
   return (
     <>
       <Dialog
@@ -39,7 +41,7 @@ const FinishModal = (props) => {
         </DialogTitle>
         <DialogContent>
           <Box style={{textAlign: "center", paddingTop: 15, alignContent: 'center'}}>
-          <Button href="https://app.bizmake.jp/canvas/js-4863/Lean/%EF%BD%8A-9489" color="primary" variant="outlined" startIcon={< LinkOutlinedIcon />}>
+          <Button href={spredSheetUrl} color="primary" variant="outlined" startIcon={< LinkOutlinedIcon />}>
           リーンキャンバスシート
         </Button>
           <Box m={2}>

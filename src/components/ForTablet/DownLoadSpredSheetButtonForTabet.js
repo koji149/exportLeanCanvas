@@ -8,6 +8,7 @@ import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 
 import FinishModal from '../FinishModal'
 import PreparationModal from '../PreparationModal'
+import {quotes} from '../../utilty/randomQuote'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,41 +40,61 @@ const SpredSheetButton = withStyles((theme) => ({
 }))(Button);
 
 const DownLoadSpredSheetButtonForTabet = (props) => {
-  const createLeanCanvas = props.createLeanCanvas
+  const {
+    createLeanCanvas,
+    spredSheetUrl,
+    isArrivedUrl,
+    setIsArrivedUrl
+  } = props
 
   const classes = useStyles();
   const [openPreparationModal, setOpenPreparationModal] = useState(false);
   const [openFinishModal, setOpenFinishModal] = useState(false);
+  let [quote, setQuote] = useState("")
+  let [byName, setByName] = useState("")
 
   const handleOpenPreparationModal = () => {
-    console.log("モーダル開く前")
+    displayRandomQuotesAndName ()
     setOpenPreparationModal(true);
     createLeanCanvas();
-    console.log("モーダル開いた後")
-
   };
 
   const handleClosePreparationModal = () => {
     setOpenPreparationModal(false);
-    
+
   };
 
   const handleCloseFinishModal = () => {
     setOpenFinishModal(false);
   };
 
+  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  const displayRandomQuotesAndName = () => {
+    setQuote(randomQuote.quote)
+    setByName(randomQuote.name)
+  }
+
   return (
     <>
       <SpredSheetButton className={classes.button} onClick={handleOpenPreparationModal}>
         <CloudDownloadOutlinedIcon className={classes.icon}/>
-      </SpredSheetButton> 
-      <PreparationModal 
+      </SpredSheetButton>
+      <PreparationModal
         openPreparationModal={openPreparationModal}
-        setOpenPreparationModal={setOpenPreparationModal} 
-        handleClosePreparationModal={handleClosePreparationModal} 
+        setOpenPreparationModal={setOpenPreparationModal}
+        handleClosePreparationModal={handleClosePreparationModal}
         setOpenFinishModal={setOpenFinishModal}
+        isArrivedUrl={isArrivedUrl}
+        setIsArrivedUrl={setIsArrivedUrl}
+        quote={quote}
+        byName={byName}
       />
-      <FinishModal openFinishModal={openFinishModal} handleCloseFinishModal={handleCloseFinishModal}/>
+      <FinishModal
+        openFinishModal={openFinishModal}
+        handleCloseFinishModal={handleCloseFinishModal}
+        spredSheetUrl={spredSheetUrl}
+      />
     </>
   )
 }

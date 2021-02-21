@@ -4,7 +4,6 @@ import Box from '@material-ui/core/Box';
 
 import DownLoadSpredSheetButton from '../DownLoadSpredSheetButton'
 import AllTextClearButton from '../AllTextClearButton'
-import ChangeColorTextButton from '../ChangeColorTextButton'
 
 const useStyles = makeStyles((theme) => ({
   buttonGroup: {
@@ -23,25 +22,30 @@ const useStyles = makeStyles((theme) => ({
 const ButtonGroupForLaptop = (props) => {
   const classes = useStyles();
 
-  const createLeanCanvas = props.createLeanCanvas
-  const allTextClear = props.allTextClear
-  const setProblem = props.setProblem
-  const setAlternatives = props.setAlternatives
-  const setCustomer = props.setCustomer
-  const setEarlyAdopters = props.setEarlyAdopters
-  const setUniqueValue = props.setUniqueValue
-  const setSolution = props.setSolution
-  const setChannels = props.setChannels
-  const setRevenue = props.setRevenue
-  const setCost = props.setCost
-  const setKeyMetrics = props.setKeyMetrics
-  const setUnfairAdvantage = props.setUnfairAdvantage
+  const {
+    setProblem,
+    setAlternatives,
+    setCustomer,
+    setEarlyAdopters,
+    setUniqueValue,
+    setSolution,
+    setChannels,
+    setRevenue,
+    setCost,
+    setKeyMetrics,
+    setUnfairAdvantage,
+    createLeanCanvas,
+    allTextClear,
+    spredSheetUrl,
+    isArrivedUrl,
+    setIsArrivedUrl
+  } = props
 
   return (
     <Box className={classes.buttonGroup}  >
-      
+
       <Box flex={0.5} className={classes.button}>
-        <AllTextClearButton 
+        <AllTextClearButton
           allTextClear={allTextClear}
           setProblem={setProblem}
           setAlternatives={setAlternatives}
@@ -57,7 +61,12 @@ const ButtonGroupForLaptop = (props) => {
         />
       </Box>
       <Box flex={0.5} className={classes.button}>
-        <DownLoadSpredSheetButton createLeanCanvas={createLeanCanvas}/>
+        <DownLoadSpredSheetButton
+          createLeanCanvas={createLeanCanvas}
+          spredSheetUrl={spredSheetUrl}
+          isArrivedUrl={isArrivedUrl}
+          setIsArrivedUrl={setIsArrivedUrl}
+        />
       </Box>
     </Box>
   )

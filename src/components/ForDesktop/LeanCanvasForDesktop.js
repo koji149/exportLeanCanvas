@@ -96,7 +96,7 @@ const useStylesFormSmall = makeStyles((theme) => ({
 const useStylesFormMedium = makeStyles((theme) => ({
   root: {
     borderTop: '4px solid #e2e2e1',
-    borderBottom: '4px solid #e2e2e1',
+    borderBottom: '3px solid #e2e2e1',
     borderLeft: '2px solid #e2e2e1',
     borderRight: '2px solid #e2e2e1',
     overflow: 'hidden',
@@ -127,29 +127,30 @@ const FormTextField = ({formType, ...props}) => {
 const LeanCanvasForDesktop = (props) => {
   const classes = useStyles();
 
-  const problem = props.problem
-  const setProblem = props.setProblem
-  const alternatives = props.alternatives
-  const setAlternatives = props.setAlternatives
-  const customer = props.customer
-  const setCustomer = props.setCustomer
-  const earlyAdopters = props.earlyAdopters
-  const setEarlyAdopters = props.setEarlyAdopters
-  const uniqueValue = props.uniqueValue
-  const setUniqueValue = props.setUniqueValue
-  const solution = props.solution
-  const setSolution = props.setSolution
-  const channels = props.channels
-  const setChannels = props.setChannels
-  const revenue = props.revenue
-  const setRevenue = props.setRevenue
-  const cost = props.cost
-  const setCost = props.setCost
-  const keyMetrics = props.keyMetrics
-  const setKeyMetrics = props.setKeyMetrics
-  const unfairAdvantage = props.unfairAdvantage
-  const setUnfairAdvantage = props.setUnfairAdvantage
-
+  const {
+    problem,
+    setProblem,
+    alternatives,
+    setAlternatives,
+    customer,
+    setCustomer,
+    earlyAdopters,
+    setEarlyAdopters,
+    uniqueValue,
+    setUniqueValue,
+    solution,
+    setSolution,
+    channels,
+    setChannels,
+    revenue,
+    setRevenue,
+    cost,
+    setCost,
+    keyMetrics,
+    setKeyMetrics,
+    unfairAdvantage,
+    setUnfairAdvantage
+  } = props
   const PLOBLEM_KEY = 'problem'
   const ALTERNATIVES_KEY = 'alternatives'
   const CUSTOMER_KEY = 'customer'
@@ -196,8 +197,6 @@ const LeanCanvasForDesktop = (props) => {
       sessionStorage[COST_KEY] = JSON.stringify(cost);
       sessionStorage[KEYMETRICS_KEY] = JSON.stringify(keyMetrics);
       sessionStorage[UNFAIRADVANTAGE_KEY] = JSON.stringify(unfairAdvantage);
-      console.log(`sessionStorage[PLOBLEM_KEY]は${sessionStorage[PLOBLEM_KEY]}`)
-      console.log('Updated!')
     } else {
       mounted.current = true
     }
@@ -215,14 +214,14 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                   <FormTextField
-                    label="➀課題"
+                    label="①課題"
                     variant="filled"
                     id="form-input"
                     formType={false}
-                    multiline 
-                    rows={7} 
+                    multiline
+                    rows={7}
                     fullWidth
-                    value={problem} 
+                    value={problem}
                     onChange={e => setProblem(e.target.value)}
                   />
               </Grid>
@@ -231,14 +230,14 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                  label="➁既存の代替品"
+                  label="②既存の代替品"
                   variant="filled"
                   id="form-input"
                   formType={false}
                   multiline
                   rows={7}
                   fullWidth
-                  value={alternatives} 
+                  value={alternatives}
                   onChange={e => setAlternatives(e.target.value)}
                 />
               </Grid>
@@ -249,14 +248,14 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                    label="➅ソリューション"
+                    label="⑥ソリューション"
                     variant="filled"
                     id="form-input"
                     formType={false}
                     multiline
                     rows={7}
                     fullWidth
-                    value={solution} 
+                    value={solution}
                     onChange={e => setSolution(e.target.value)}
                   />
               </Grid>
@@ -265,14 +264,14 @@ const LeanCanvasForDesktop = (props) => {
                     <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                  label="➉主要指標"
+                  label="⑩主要指標"
                   variant="filled"
                   id="form-input"
                   formType={false}
                   multiline
                   rows={7}
                   fullWidth
-                  value={keyMetrics} 
+                  value={keyMetrics}
                   onChange={e => setKeyMetrics(e.target.value)}
                 />
               </Grid>
@@ -282,14 +281,14 @@ const LeanCanvasForDesktop = (props) => {
                 <InfoOutlinedIcon color="action" />
               </Tooltip>
               <FormTextField
-                  label="➄独自の価値提案"
+                  label="⑤独自の価値提案"
                   variant="filled"
                   id="form-input"
                   formType={true}
                   multiline
                   rows={16}
                   fullWidth
-                  value={uniqueValue} 
+                  value={uniqueValue}
                   onChange={e => setUniqueValue(e.target.value)}
                 />
             </Grid>
@@ -306,7 +305,7 @@ const LeanCanvasForDesktop = (props) => {
                   multiline
                   rows={7}
                   fullWidth
-                  value={unfairAdvantage} 
+                  value={unfairAdvantage}
                   onChange={e => setUnfairAdvantage(e.target.value)}
                 />
               </Grid>
@@ -315,7 +314,7 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                  label="➆チャネル"
+                  label="⑦チャネル"
                   className={classes.margin}
                   variant="filled"
                   id="form-input"
@@ -323,7 +322,7 @@ const LeanCanvasForDesktop = (props) => {
                   multiline
                   rows={7}
                   fullWidth
-                  value={channels} 
+                  value={channels}
                   onChange={e => setChannels(e.target.value)}
                 />
               </Grid>
@@ -334,14 +333,14 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                   <FormTextField
-                    label="➂顧客セグメント"
+                    label="③顧客セグメント"
                     variant="filled"
                     id="form-input"
                     formType={false}
                     multiline
                     rows={7}
                     fullWidth
-                    value={customer} 
+                    value={customer}
                     onChange={e => setCustomer(e.target.value)}
                   />
               </Grid>
@@ -350,7 +349,7 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                   <FormTextField
-                    label="➃アーリーアダプター"
+                    label="④アーリーアダプター"
                     className={classes.margin}
                     variant="filled"
                     id="form-input"
@@ -358,7 +357,7 @@ const LeanCanvasForDesktop = (props) => {
                     multiline
                     rows={7}
                     fullWidth
-                    value={earlyAdopters} 
+                    value={earlyAdopters}
                     onChange={e => setEarlyAdopters(e.target.value)}
                   />
                 </Grid>
@@ -372,7 +371,7 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                  label="➈コスト構造"
+                  label="⑨コスト構造"
                   className={classes.margin}
                   variant="filled"
                   id="form-input"
@@ -380,7 +379,7 @@ const LeanCanvasForDesktop = (props) => {
                   multiline
                   rows={7}
                   fullWidth
-                  value={revenue} 
+                  value={revenue}
                   onChange={e => setRevenue(e.target.value)}
                 />
               </Grid>
@@ -389,7 +388,7 @@ const LeanCanvasForDesktop = (props) => {
                   <InfoOutlinedIcon color="action" />
                 </Tooltip>
                 <FormTextField
-                  label="➇収益の流れ"
+                  label="⑧収益の流れ"
                   className={classes.margin}
                   variant="filled"
                   id="form-input"
@@ -397,7 +396,7 @@ const LeanCanvasForDesktop = (props) => {
                   multiline
                   rows={7}
                   fullWidth
-                  value={cost} 
+                  value={cost}
                   onChange={e => setCost(e.target.value)}
                 />
               </Grid>
