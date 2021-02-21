@@ -151,6 +151,7 @@ const LeanCanvasForDesktop = (props) => {
     unfairAdvantage,
     setUnfairAdvantage
   } = props
+
   const PLOBLEM_KEY = 'problem'
   const ALTERNATIVES_KEY = 'alternatives'
   const CUSTOMER_KEY = 'customer'
@@ -162,7 +163,6 @@ const LeanCanvasForDesktop = (props) => {
   const COST_KEY = 'cost'
   const KEYMETRICS_KEY = 'keyMetrics'
   const UNFAIRADVANTAGE_KEY = 'unfairAdvantage'
-
 
   const initValue = (key, dispatch) => {
     const initVal = sessionStorage.getItem(key);

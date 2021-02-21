@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios'
-
+import {REACT_APP_DEV_API_URL} from '../env'
 
 import LeanCanvasForDesktop from './ForDesktop/LeanCanvasForDesktop';
 import ButtonGroupForDesktop from './ForDesktop/ButtonGroupForDesktop';
@@ -103,7 +103,7 @@ const Main = () => {
       })
       axios({
         method : "POST",
-        url : "http://localhost:3001/api/v1/export",
+        url : REACT_APP_DEV_API_URL,
         data : { problem: problem,
           alternatives: alternatives,
           customer: customer,
