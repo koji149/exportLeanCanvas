@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios'
-import {REACT_APP_API_URL} from '../env'
 
 import LeanCanvasForDesktop from './ForDesktop/LeanCanvasForDesktop';
 import ButtonGroupForDesktop from './ForDesktop/ButtonGroupForDesktop';
@@ -13,8 +12,6 @@ import LeanCanvasForTablet from './ForTablet/LeanCanvasForTablet';
 import ButtonGroupForTablet from './ForTablet/ButtonGroupForTablet';
 import LeanCanvasForMobile from './ForMobile/LeanCanvasForMobile';
 import ButtonGroupForMobile from './ForMobile/ButtonGroupForMobile';
-
-
 
 import AppContext from "../contexts/AppContext"
 import {ALL_TEXT_CLEAR, CREATE_LEAN_CANVAS, TEXT_CLEAR} from "../actions"
@@ -83,6 +80,9 @@ const Main = () => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1075 })
   const isMobile = useMediaQuery({ maxWidth: 767 })
 
+  // require('dotenv').config();
+  const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+
   const createLeanCanvas = e => {
     if (isFirstRender.current) {
       isFirstRender.current = false
@@ -120,8 +120,11 @@ const Main = () => {
       .then((response)=> {
         setSpredSheetUrl(`https://docs.google.com/spreadsheets/d/${response.data}/edit`)
         setIsArrivedUrl(true)
+        console.log("成功")
       })
       .catch((error)=> {
+        console.log(error)
+        console.log("失敗")
       });
     }
   }
