@@ -21,12 +21,15 @@ const CancelButton = withStyles((theme) => ({
 }))(Button);
 
 const PreparationModal = (props) => {
-  console.log("props受取前")
   const openPreparationModal = props.openPreparationModal
   const setOpenPreparationModal = props.setOpenPreparationModal
   const handleClosePreparationModal = props.handleClosePreparationModal
   const setOpenFinishModal = props.setOpenFinishModal
-  console.log("props受取")
+  const spredSheetUrl = props.spredSheetUrl
+  const isArrivedUrl = props.isArrivedUrl
+  const setIsArrivedUrl = props.setIsArrivedUrl
+  let quote = props.quote
+  let byName = props.byName
 
   return (
   <Dialog
@@ -42,10 +45,16 @@ const PreparationModal = (props) => {
       </Box>
     </DialogTitle>
     <DialogContent>
-    <CustomizedProgressBars setOpenPreparationModal={setOpenPreparationModal} setOpenFinishModal={setOpenFinishModal}/>
+      <CustomizedProgressBars
+        setOpenPreparationModal={setOpenPreparationModal}
+        setOpenFinishModal={setOpenFinishModal}
+        spredSheetUrl={spredSheetUrl}
+        isArrivedUrl={isArrivedUrl}
+        setIsArrivedUrl={setIsArrivedUrl}
+      />
       <Box id="alert-dialog-description" style={{textAlign: "center", paddingTop: 25, alignContent: 'center'}}>
-        <Box fontWeight="fontWeightMedium" m={1}>
-          subtitle1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur
+        <Box fontWeight="fontWeightLight" color="text.disabled" fontSize={16}>
+          {quote}ー{byName}ー
         </Box>
       </Box>
       <Box style={{textAlign: "center", paddingTop: 25,paddingBottom: 25, alignContent: 'center'}}>

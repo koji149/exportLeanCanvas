@@ -1,17 +1,37 @@
 import React, {useState} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {
   withStyles,
 } from '@material-ui/core/styles';
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined';
 
-import FinishModal from './FinishModal'
-import PreparationModal from './PreparationModal'
-import {quotes} from '../utilty/randomQuote'
+import FinishModal from '../FinishModal'
+import PreparationModal from '../PreparationModal'
+import {quotes} from '../../utilty/randomQuote'
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2, 4, 3),
+  },
+  button: {
+    margin: theme.spacing(2),
+    height: 80,
+    width: 80
+  },
+  icon: {
+    height: 35,
+    width: 35
+  }
+}));
 
 const SpredSheetButton = withStyles((theme) => ({
   root: {
     borderRadius: 50,
+    boxShadow: '0 3px 5px 2px #0c7e46',
     color: theme.palette.getContrastText("#0F9D58"),
     backgroundColor: "#0F9D58",
     '&:hover': {
@@ -20,7 +40,7 @@ const SpredSheetButton = withStyles((theme) => ({
   },
 }))(Button);
 
-const DownLoadSpredSheetButton = (props) => {
+const DownLoadSpredSheetButtonForMobile = (props) => {
   const {
     createLeanCanvas,
     spredSheetUrl,
@@ -28,6 +48,7 @@ const DownLoadSpredSheetButton = (props) => {
     setIsArrivedUrl
   } = props
 
+  const classes = useStyles();
   const [openPreparationModal, setOpenPreparationModal] = useState(false);
   const [openFinishModal, setOpenFinishModal] = useState(false);
   let [quote, setQuote] = useState("")
@@ -41,7 +62,6 @@ const DownLoadSpredSheetButton = (props) => {
 
   const handleClosePreparationModal = () => {
     setOpenPreparationModal(false);
-    setIsArrivedUrl(false)
   };
 
   const handleCloseFinishModal = () => {
@@ -54,17 +74,17 @@ const DownLoadSpredSheetButton = (props) => {
     setQuote(randomQuote.quote)
     setByName(randomQuote.name)
   }
+
   return (
     <>
-      <SpredSheetButton variant="contained" color="primary" size="large" onClick={handleOpenPreparationModal} startIcon={<CloudDownloadOutlinedIcon />}>
-        Google SpredSheet
+      <SpredSheetButton className={classes.button} onClick={handleOpenPreparationModal}>
+        <CloudDownloadOutlinedIcon className={classes.icon}/>
       </SpredSheetButton>
       <PreparationModal
         openPreparationModal={openPreparationModal}
         setOpenPreparationModal={setOpenPreparationModal}
         handleClosePreparationModal={handleClosePreparationModal}
         setOpenFinishModal={setOpenFinishModal}
-        spredSheetUrl={spredSheetUrl}
         isArrivedUrl={isArrivedUrl}
         setIsArrivedUrl={setIsArrivedUrl}
         quote={quote}
@@ -74,9 +94,9 @@ const DownLoadSpredSheetButton = (props) => {
         openFinishModal={openFinishModal}
         handleCloseFinishModal={handleCloseFinishModal}
         spredSheetUrl={spredSheetUrl}
-        />
+      />
     </>
   )
 }
 
-export default DownLoadSpredSheetButton;
+export default DownLoadSpredSheetButtonForMobile;

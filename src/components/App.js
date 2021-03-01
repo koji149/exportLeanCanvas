@@ -29,21 +29,19 @@ const App = () => {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  console.log(state)
 
   useEffect(() => {
     sessionStorage.setItem(APP_KEY, JSON.stringify(state) )
-    //console.log("useeffectまで来た")
     },[state])
 
   return (
-    <AppContext.Provider value={{state, dispatch}}>
-      <div className={classes.root}>
-        <Header/>
-        <Main/>
-        <Footer/>
-      </div>
-    </AppContext.Provider>
+      <AppContext.Provider value={{state, dispatch}}>
+        <div className={classes.root}>
+            <Header/>
+            <Main/>
+            <Footer/>
+        </div>
+      </AppContext.Provider>
   );
 }
 

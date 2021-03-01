@@ -1,6 +1,7 @@
 import {
   CREATE_LEAN_CANVAS,
-  DELETE_ALL_EVENT
+  ALL_TEXT_CLEAR,
+  TEXT_CLEAR
 } from "../actions"
 
 const operationLeanCanvasContents = (state = [], action) => {
@@ -19,10 +20,10 @@ const operationLeanCanvasContents = (state = [], action) => {
         keyMetrics: action.keyMetrics,
         unfairAdvantage: action.unfairAdvantage,
   }
-  console.log(`${state}ddd`)
-
-      return [ contents]
-    case DELETE_ALL_EVENT:
+      return [contents]
+    case TEXT_CLEAR:
+      return state.filter(event => event.id !== action.id)
+    case ALL_TEXT_CLEAR:
       return []
     default:
       return state
