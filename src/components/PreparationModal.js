@@ -43,6 +43,9 @@ const PreparationModal = (props) => {
       <Box fontWeight="fontWeightBold" m={1}>
         リーンキャンバスを準備中...
       </Box>
+      <Box fontWeight="fontWeightRegular" fontSize={14} m={1}>
+        時間がかかる場合がございます。しばらくお待ちください。
+      </Box>
     </DialogTitle>
     <DialogContent>
       <CustomizedProgressBars
