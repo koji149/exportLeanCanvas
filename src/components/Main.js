@@ -82,7 +82,7 @@ const Main = () => {
 
   // require('dotenv').config();
   const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
-
+  console.log(process.env.REACT_APP_API_URL)
   const createLeanCanvas = e => {
     if (isFirstRender.current) {
       isFirstRender.current = false
