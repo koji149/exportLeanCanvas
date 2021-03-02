@@ -29,7 +29,9 @@ const ButtonGroupForTablet = (props) => {
     createLeanCanvas,
     spredSheetUrl,
     isArrivedUrl,
-    setIsArrivedUrl
+    setIsArrivedUrl,
+    isNotArrivedUrl,
+    setIsNotArrivedUrl
   } = props
 
   return (
@@ -40,6 +42,8 @@ const ButtonGroupForTablet = (props) => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box>
     </Box>

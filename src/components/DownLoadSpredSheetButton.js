@@ -7,6 +7,7 @@ import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined'
 
 import FinishModal from './FinishModal'
 import PreparationModal from './PreparationModal'
+import ErrorArrivedModal from './ErrorArrivedModal'
 import {quotes} from '../utilty/randomQuote'
 
 const SpredSheetButton = withStyles((theme) => ({
@@ -25,11 +26,15 @@ const DownLoadSpredSheetButton = (props) => {
     createLeanCanvas,
     spredSheetUrl,
     isArrivedUrl,
-    setIsArrivedUrl
+    setIsArrivedUrl,
+    isNotArrivedUrl,
+    setIsNotArrivedUrl
   } = props
 
   const [openPreparationModal, setOpenPreparationModal] = useState(false);
   const [openFinishModal, setOpenFinishModal] = useState(false);
+  const [openErrorArrivedModal, setOpenErrorArrivedModal] = useState(false);
+
   let [quote, setQuote] = useState("")
   let [byName, setByName] = useState("")
 
@@ -48,6 +53,10 @@ const DownLoadSpredSheetButton = (props) => {
     setOpenFinishModal(false);
   };
 
+  const handleCloseErrorArrivedModal = () => {
+    setOpenErrorArrivedModal(false);
+  };
+
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
   const displayRandomQuotesAndName = () => {
@@ -64,9 +73,12 @@ const DownLoadSpredSheetButton = (props) => {
         setOpenPreparationModal={setOpenPreparationModal}
         handleClosePreparationModal={handleClosePreparationModal}
         setOpenFinishModal={setOpenFinishModal}
+        setOpenErrorArrivedModal={setOpenErrorArrivedModal}
         spredSheetUrl={spredSheetUrl}
         isArrivedUrl={isArrivedUrl}
         setIsArrivedUrl={setIsArrivedUrl}
+        isNotArrivedUrl={isNotArrivedUrl}
+        setIsNotArrivedUrl={setIsNotArrivedUrl}
         quote={quote}
         byName={byName}
       />
@@ -75,6 +87,10 @@ const DownLoadSpredSheetButton = (props) => {
         handleCloseFinishModal={handleCloseFinishModal}
         spredSheetUrl={spredSheetUrl}
         />
+      <ErrorArrivedModal
+      openErrorArrivedModal={openErrorArrivedModal}
+      handleCloseErrorArrivedModal={handleCloseErrorArrivedModal}
+      />
     </>
   )
 }

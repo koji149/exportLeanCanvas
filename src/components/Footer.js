@@ -29,7 +29,7 @@ const Footer = () => {
     <Box className={classes.footer} display="flex" flexDirection="row" >
         <Box className={classes.footerItem} fontWeight="fontWeightSmall" m={1}>
           <Typography variant="caption" display="block" gutterBottom>
-              Copyright © 2020 SHAKE Inc.
+              Copyright © 2020 YourIdea Inc.
           </Typography>
         </Box>
         <Box className={classes.footerItem} fontWeight="fontWeightSmall" m={1}>

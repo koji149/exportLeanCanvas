@@ -40,7 +40,9 @@ const ButtonGroupForDesktop = (props) => {
     allTextClear,
     spredSheetUrl,
     isArrivedUrl,
-    setIsArrivedUrl
+    setIsArrivedUrl,
+    isNotArrivedUrl,
+    setIsNotArrivedUrl
   } = props
 
   return (
@@ -51,6 +53,8 @@ const ButtonGroupForDesktop = (props) => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box>
       <Box flex={0.5} className={classes.button}>

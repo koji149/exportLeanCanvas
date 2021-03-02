@@ -70,6 +70,8 @@ const Main = () => {
 
   const [spredSheetUrl, setSpredSheetUrl] = useState("")
   const [isArrivedUrl, setIsArrivedUrl] = useState(false)
+  const [isNotArrivedUrl, setIsNotArrivedUrl] = useState(false)
+
 
   const isFirstRender = useRef(false)
 
@@ -82,7 +84,6 @@ const Main = () => {
 
   // require('dotenv').config();
   const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
-  console.log(process.env.REACT_APP_API_URL)
   const createLeanCanvas = e => {
     if (isFirstRender.current) {
       isFirstRender.current = false
@@ -120,11 +121,13 @@ const Main = () => {
       .then((response)=> {
         setSpredSheetUrl(`https://docs.google.com/spreadsheets/d/${response.data}/edit`)
         setIsArrivedUrl(true)
-        console.log("成功")
+        // console.log("成功")
       })
       .catch((error)=> {
-        console.log(error)
-        console.log("失敗")
+        // console.log(error)
+        // console.log("失敗")
+        // console.log(REACT_APP_API_URL)
+        setIsNotArrivedUrl(true)
       });
     }
   }
@@ -188,6 +191,8 @@ const Main = () => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box> : null
     }
@@ -234,6 +239,8 @@ const Main = () => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box> : null
     }
@@ -280,6 +287,8 @@ const Main = () => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box> : null
     }
@@ -326,6 +335,8 @@ const Main = () => {
           spredSheetUrl={spredSheetUrl}
           isArrivedUrl={isArrivedUrl}
           setIsArrivedUrl={setIsArrivedUrl}
+          isNotArrivedUrl={isNotArrivedUrl}
+          setIsNotArrivedUrl={setIsNotArrivedUrl}
         />
       </Box> : null
     }

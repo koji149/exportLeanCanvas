@@ -28,6 +28,9 @@ const PreparationModal = (props) => {
   const spredSheetUrl = props.spredSheetUrl
   const isArrivedUrl = props.isArrivedUrl
   const setIsArrivedUrl = props.setIsArrivedUrl
+  const isNotArrivedUrl = props.isNotArrivedUrl
+  const setIsNotArrivedUrl = props.setIsNotArrivedUrl
+  const setOpenErrorArrivedModal = props.setOpenErrorArrivedModal
   let quote = props.quote
   let byName = props.byName
 
@@ -44,16 +47,19 @@ const PreparationModal = (props) => {
         リーンキャンバスを準備中...
       </Box>
       <Box fontWeight="fontWeightRegular" fontSize={14} m={1}>
-        時間がかかる場合がございます。しばらくお待ちください。
+        20秒ほどかかる場合がございます。しばらくお待ちください。
       </Box>
     </DialogTitle>
     <DialogContent>
       <CustomizedProgressBars
         setOpenPreparationModal={setOpenPreparationModal}
         setOpenFinishModal={setOpenFinishModal}
+        setOpenErrorArrivedModal={setOpenErrorArrivedModal}
         spredSheetUrl={spredSheetUrl}
         isArrivedUrl={isArrivedUrl}
         setIsArrivedUrl={setIsArrivedUrl}
+        isNotArrivedUrl={isNotArrivedUrl}
+        setIsNotArrivedUrl={setIsNotArrivedUrl}
       />
       <Box id="alert-dialog-description" style={{textAlign: "center", paddingTop: 25, alignContent: 'center'}}>
         <Box fontWeight="fontWeightLight" color="text.disabled" fontSize={16}>
