@@ -22,7 +22,8 @@ const CancelButton = withStyles((theme) => ({
 const ErrorArrivedModal = (props) => {
   const openErrorArrivedModal = props.openErrorArrivedModal
   const handleCloseErrorArrivedModal = props.handleCloseErrorArrivedModal
-  const TWITTER_URL = process.env.TWITTER_URL;
+    require('dotenv').config();
+  const REACT_APP_TWITTER_URL = process.env.REACT_APP_TWITTER_URL;
 
   return (
     <>
@@ -40,7 +41,7 @@ const ErrorArrivedModal = (props) => {
         </DialogTitle>
         <DialogContent>
           <Box style={{textAlign: "center", paddingTop: 15, alignContent: 'center'}}>
-          <Button href={TWITTER_URL} color="primary" variant="outlined" startIcon={< LinkOutlinedIcon />}>
+          <Button href={REACT_APP_TWITTER_URL} color="primary" variant="outlined" startIcon={< LinkOutlinedIcon />}>
           twitterで状態を確認する。
         </Button>
 

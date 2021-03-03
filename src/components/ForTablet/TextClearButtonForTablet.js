@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 const TextClearButtonForTablet = (props) => {
   const classes = useStyles();
 
-  const thisTextClear = props.textClear
   const textClear = () => {
     if (props.setProblem) {props.setProblem("") }
     if (props.setAlternatives) props.setAlternatives("")

@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef} from 'react';
+import React, {useState, useContext, useRef, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import { useMediaQuery } from 'react-responsive'
@@ -54,6 +54,22 @@ const useStyles = makeStyles({
 });
 
 const Main = () => {
+  // require('dotenv').config();
+  const REACT_APP_API_URL_TOP = process.env.REACT_APP_API_URL_TOP;
+  useEffect(() => {
+    axios({
+      method : "GET",
+      url : REACT_APP_API_URL_TOP,
+    })
+    .then((response)=> {
+      console.log(response)
+      console.log("成功")
+    })
+    .catch((error)=> {
+      console.log(error)
+      console.log("失敗")
+    });
+  }, [REACT_APP_API_URL_TOP])
   const classes = useStyles();
 
   const [problem, setProblem] = useState("")
@@ -75,7 +91,7 @@ const Main = () => {
 
   const isFirstRender = useRef(false)
 
-  const { state, dispatch} = useContext(AppContext)
+  const { dispatch} = useContext(AppContext)
 
   const isDesktop = useMediaQuery({ minWidth: 1280 })
   const isLaptop = useMediaQuery({ minWidth: 1076, maxWidth: 1280 })
@@ -83,7 +99,7 @@ const Main = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
 
   // require('dotenv').config();
-  const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+  const REACT_APP_API_URL_EXPORT = process.env.REACT_APP_API_URL_EXPORT;
   const createLeanCanvas = e => {
     if (isFirstRender.current) {
       isFirstRender.current = false
@@ -104,7 +120,7 @@ const Main = () => {
       })
       axios({
         method : "POST",
-        url : REACT_APP_API_URL,
+        url : REACT_APP_API_URL_EXPORT,
         data : { problem: problem,
           alternatives: alternatives,
           customer: customer,

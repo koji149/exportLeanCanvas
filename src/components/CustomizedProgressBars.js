@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import React, {useEffect} from 'react';
+import { makeStyles} from '@material-ui/core/styles';
 // import LinearProgress from '@material-ui/core/LinearProgress';
 import CircularIndeterminate from "./CircularIndeterminate"
 
@@ -65,7 +65,7 @@ const CustomizedProgressBars = (props) => {
         setOpenFinishModal(true)
       }, 100);
     }
-  }, [isArrivedUrl]
+  }, [isArrivedUrl, setOpenPreparationModal, setIsArrivedUrl, setOpenFinishModal]
   );
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const CustomizedProgressBars = (props) => {
         setOpenErrorArrivedModal(true)
       }, 100);
     }
-  }, [isNotArrivedUrl]
+  }, [isNotArrivedUrl, setOpenPreparationModal, setIsNotArrivedUrl, setOpenErrorArrivedModal]
   );
 
   return (

@@ -126,7 +126,7 @@ const LeanCanvasForMobile = (props) => {
     initValue(COST_KEY, setCost)
     initValue(KEYMETRICS_KEY, setKeyMetrics)
     initValue(UNFAIRADVANTAGE_KEY, setUnfairAdvantage)
-  }, []);
+  }, [setProblem, setAlternatives, setCustomer, setEarlyAdopters, setUniqueValue, setSolution, setChannels, setRevenue, setCost, setKeyMetrics, setUnfairAdvantage]);
 
   const mounted = useRef(false)
   useEffect(() => {
