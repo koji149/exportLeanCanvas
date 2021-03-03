@@ -56,11 +56,12 @@ const useStyles = makeStyles({
 const Main = () => {
   // require('dotenv').config();
   useEffect(() => {
+    console.log(window.location.href)
     const domein = document.domain
     const REACT_APP_HEROKU_DOMEIN = process.env.REACT_APP_HEROKU_DOMEIN;
     const REACT_APP_ORIGINAL_URL = process.env.REACT_APP_ORIGINAL_URL;
     const REACT_APP_INSECURE_URL = process.env.REACT_APP_INSECURE_URL;
-    if ((domein===REACT_APP_HEROKU_DOMEIN)||(window.location.href===REACT_APP_INSECURE_URL)) window.location.href=REACT_APP_ORIGINAL_URL
+    if ((window.location.href===REACT_APP_INSECURE_URL) || (domein===REACT_APP_HEROKU_DOMEIN)) window.location.href=REACT_APP_ORIGINAL_URL
   }, [])
   const classes = useStyles();
 
