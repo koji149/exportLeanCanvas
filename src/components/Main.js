@@ -56,10 +56,16 @@ const useStyles = makeStyles({
 const Main = () => {
   // require('dotenv').config();
   const REACT_APP_API_URL_TOP = process.env.REACT_APP_API_URL_TOP;
+
+    const domein = document.domain
+    console.log(domein)
+    const h = window.location.hostname
+    console.log(h)
   useEffect(() => {
     axios({
       method : "GET",
       url : REACT_APP_API_URL_TOP,
+      data : { domein: domein}
     })
     .then((response)=> {
       console.log(response)
@@ -69,7 +75,7 @@ const Main = () => {
       console.log(error)
       console.log("失敗")
     });
-  }, [REACT_APP_API_URL_TOP])
+  }, [REACT_APP_API_URL_TOP, domein])
   const classes = useStyles();
 
   const [problem, setProblem] = useState("")
@@ -131,7 +137,8 @@ const Main = () => {
           revenue: revenue,
           cost: cost,
           keyMetrics: keyMetrics,
-          unfairAdvantage: unfairAdvantage
+          unfairAdvantage: unfairAdvantage,
+          domein: domein
         }
       })
       .then((response)=> {

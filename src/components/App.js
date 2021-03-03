@@ -35,21 +35,20 @@ const App = () => {
   useEffect(() => {
     sessionStorage.setItem(APP_KEY, JSON.stringify(state) )
     },[state])
-
   return (
       <BrowserRouter>
         <AppContext.Provider value={{state, dispatch}}>
           <Switch>
             <>
               <div className={classes.root}>
-                <Header/>
-                  <Route exact path="/">
-                    <Main />
-                  </Route>
-                  {/* <Route path="*">
-                    <Page404 />
-                  </Route> */}
-                  <Footer/>
+              <Header/>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                {/* <Route path="*">
+                  <Page404 />
+                </Route> */}
+                <Footer/>
               </div>
             </>
           </Switch>
