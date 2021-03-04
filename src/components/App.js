@@ -1,11 +1,11 @@
 import React, {useEffect, useReducer} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-// import Page404 from '../pages/Page404'
+import Page404 from '../pages/Page404'
 
 import reducer from "../reducers/index"
 import AppContext from "../contexts/AppContext"
@@ -38,20 +38,18 @@ const App = () => {
   return (
       <BrowserRouter>
         <AppContext.Provider value={{state, dispatch}}>
-          <Switch>
+          <div className={classes.root}>
+            <Header/>
+              <Switch>
             <>
-              <div className={classes.root}>
-              <Header/>
-                <Route exact path="/">
-                  <Main />
-                </Route>
-                {/* <Route path="*">
-                  <Page404 />
-                </Route> */}
-                <Footer/>
-              </div>
+              <Route exact path="/">
+                <Main />
+              </Route>
+              <Route component={Page404} />
             </>
-          </Switch>
+              </Switch>
+            <Footer/>
+          </div>
         </AppContext.Provider>
       </BrowserRouter>
 

@@ -87,7 +87,7 @@ const Main = () => {
   const { dispatch} = useContext(AppContext)
 
   const isDesktop = useMediaQuery({ minWidth: 1280 })
-  const isLaptop = useMediaQuery({ minWidth: 1076, maxWidth: 1280 })
+  const isLaptop = useMediaQuery({ minWidth: 1076, maxWidth: 1279 })
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1075 })
   const isMobile = useMediaQuery({ maxWidth: 767 })
 
