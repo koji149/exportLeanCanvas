@@ -13,10 +13,6 @@ services:
   nginx:
     image: nginx
     container_name: nginx
-    ports:
-      - 8080:80
     volumes:
       - ./web/build:/var/www
       - ./docker/nginx/:/etc/nginx/conf.d/
-    depends_on:
-      - react_app

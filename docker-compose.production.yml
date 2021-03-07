@@ -1,0 +1,16 @@
+services:
+  react_app:
+    # 規定ファイルのものをそのまま使う
+    extends:
+      file: docker-compose.common.yml
+      service: react_app # 規定ファイル内の対象のサービス
+
+  nginx:
+    # 規定ファイルのものを拡張して使う
+    extends:
+      file: docker-compose.common.yml
+      service: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - react_app
