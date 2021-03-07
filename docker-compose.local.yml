@@ -14,3 +14,4 @@ services:
       - 8080:80
     depends_on:
       - react_app
+#docker-compose -f docker-compose.local.yml up

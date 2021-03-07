@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import errorImg from "../image/404.png";
 
 const useStyles = makeStyles({
   root: {
@@ -36,11 +37,7 @@ const Page404 = () => {
       <Box className={classes.container}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image="https://www.yourleancanvas.com/src/image/404.png"
-              alt="Contemplative Reptile"
-            />
+            <img src={errorImg} alt="アイコン" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 ページが見つかりませんでした。

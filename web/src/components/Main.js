@@ -57,7 +57,6 @@ const useStyles = makeStyles({
 const Main = () => {
   // require('dotenv').config();
   useEffect(() => {
-    console.log(window.location.href);
     const domein = document.domain;
     const REACT_APP_HEROKU_DOMEIN = process.env.REACT_APP_HEROKU_DOMEIN;
     const REACT_APP_ORIGINAL_URL = process.env.REACT_APP_ORIGINAL_URL;
@@ -137,12 +136,8 @@ const Main = () => {
             `https://docs.google.com/spreadsheets/d/${response.data}/edit`
           );
           setIsArrivedUrl(true);
-          // console.log("成功")
         })
         .catch((error) => {
-          // console.log(error)
-          // console.log("失敗")
-          // console.log(REACT_APP_API_URL)
           setIsNotArrivedUrl(true);
         });
     }
