@@ -4,7 +4,7 @@ services:
   react_app:
     container_name: react_app
     build: ./
-    command: npx react-scripts start
+    command: npm start
     volumes:
       - ./web:/exportLeanCanvas
     ports:
