@@ -7,7 +7,6 @@ services:
     command: npx react-scripts start
     volumes:
       - ./web:/exportLeanCanvas
-      - /exportLeanCanvas/node_modules
     ports:
       - 3000:3000
 
