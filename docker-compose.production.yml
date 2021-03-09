@@ -11,8 +11,8 @@ services:
       file: docker-compose.common.yml
       service: nginx
     environment:
-      VIRTUAL_HOST: yourleancanvas.com
-      LETSENCRYPT_HOST: yourleancanvas.com
+      VIRTUAL_HOST: yourleancanvas.com,www.yourleancanvas.com
+      LETSENCRYPT_HOST: yourleancanvas.com,www.yourleancanvas.com
       LETSENCRYPT_EMAIL: exportyouridea@gmail.com
     depends_on:
       - react_app
