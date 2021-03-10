@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import { useMediaQuery } from "react-responsive";
@@ -84,7 +84,8 @@ const Main = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   // require('dotenv').config();
-  const REACT_APP_API_URL_EXPORT = process.env.REACT_APP_API_URL_EXPORT;
+  // const REACT_APP_API_URL_EXPORT = process.env.REACT_APP_API_URL_EXPORT;
+  const REACT_APP_API_URL_EXPORT_PRO = process.env.REACT_APP_API_URL_EXPORT_PRO;
   const createLeanCanvas = (e) => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -105,7 +106,7 @@ const Main = () => {
       });
       axios({
         method: "POST",
-        url: REACT_APP_API_URL_EXPORT,
+        url: REACT_APP_API_URL_EXPORT_PRO,
         data: {
           problem: problem,
           alternatives: alternatives,
