@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
                 <br />
                 ・リファラ ・IPアドレス ・サーバーアクセスログに関する情報
                 <br />
-                ・Cookie、ADID、IDFAその他の識別子 (4)
+                ・Cookie、ADID、IDFAその他の識別子
                 <br />
                 <br />
                 2. 利用目的
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
                 <br />
                 3. 通知・公表または同意取得の方法、利用中止要請の方法
                 <br />
-                <br /> 3-1
+                <br />
                 ユーザーは、お問い合わせから、利用者情報の全部または一部についてその収集又は利用の停止を求めることができ、この場合、本サービスは速やかに、本サービスの定めるところに従い、その利用を停止します。
                 <br />
                 <br />
@@ -111,6 +111,17 @@ export default function PrivacyPolicy() {
                 <br />
                 4-2
                 本サービスには以下の情報収集モジュールが組み込まれています。これに伴い、以下のとおり情報収集モジュール提供者（日本国外にある者を含みます。）への利用者情報の提供を行います。
+                <br />
+                <br />
+                Google アナリティクス SDK
+                <br />
+                提供者：Google, Inc
+                <br />
+                <LinkMaterial href="https://policies.google.com/privacy?hl=ja">
+                  URL : https://policies.google.com/privacy?hl=ja
+                </LinkMaterial>
+                <br />
+                利用目的：利用に関する動向調査のため。サービス改善のため。取得する情報、利用目的、第三者への提供等の詳細は上記のURLよりご確認ください。
                 <br />
                 <br />
                 5. 第三者提供
