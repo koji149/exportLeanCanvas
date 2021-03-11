@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles({
   logo: {
@@ -23,15 +24,20 @@ const Header = () => {
     <>
       <AppBar className={classes.logo}>
         <Toolbar>
-          <Typography variant="h6">
-            <Link
-              to="/"
-              color="inherit"
-              style={{ color: "#fff", textDecoration: "none" }}
-            >
-              YourIdea - リーンキャンバスエクスポートツール
-            </Link>
-          </Typography>
+          <Box column>
+            <Typography variant="subtitle2" component="h1">
+              リーンキャンバスのテンプレートをスプレッドシートに!
+            </Typography>
+            <Typography variant="h5" component="h3">
+              <Link
+                to="/"
+                color="inherit"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                YourIdea - リーンキャンバスエクスポートツール
+              </Link>
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
     </>
