@@ -51,6 +51,7 @@ const App = () => {
             <Route path="/terms-of-service" exact>
               <TermsOfService />
             </Route>
+            <Route path="/web/build/imgForTwitterCard.png" exact />
             <Route component={Page404} />
           </Switch>
           <Footer />
