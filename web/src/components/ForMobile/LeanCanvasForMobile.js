@@ -301,8 +301,8 @@ const LeanCanvasForMobile = (props) => {
               multiline
               rows={7}
               fullWidth
-              value={cost}
-              onChange={(e) => setCost(e.target.value)}
+              value={revenue}
+              onChange={(e) => setRevenue(e.target.value)}
             />
           </Grid>
           <Grid item xs className={classes.glidItem}>
@@ -315,8 +315,8 @@ const LeanCanvasForMobile = (props) => {
               multiline
               rows={7}
               fullWidth
-              value={revenue}
-              onChange={(e) => setRevenue(e.target.value)}
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
             />
           </Grid>
           <Grid item xs className={classes.glidItem}>

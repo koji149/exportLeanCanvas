@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     position: "sticky",
     width: "100%",
   },
+  headder: {
+    flexDirection: "column",
+  },
 });
 
 const Header = () => {
@@ -24,7 +27,7 @@ const Header = () => {
     <>
       <AppBar className={classes.logo}>
         <Toolbar>
-          <Box column>
+          <Box className={classes.flexDirection}>
             <Typography variant="subtitle2" component="h1">
               リーンキャンバスのテンプレートをスプレッドシートに!
             </Typography>
